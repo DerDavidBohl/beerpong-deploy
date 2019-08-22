@@ -1,0 +1,29 @@
+version: '3'
+services: 
+  frontend:
+    image: davidbohl/beerpong-fe
+    restart: always
+    environment: 
+      - API_URL=http://localhost:3000/api/v1
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - "api"
+  api:
+    image: davidbohl/beerpong-be
+    restart: always
+    command: bash -c "npm run build && npm run start"
+    ports: 
+      - "3000:3000"
+    links: 
+      - mongo
+    depends_on: 
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes: 
+      - /mongodata:/data/db
