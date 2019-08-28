@@ -11,8 +11,8 @@ services:
     depends_on:
       - "api"
     volumes:
-      - beerpong/frontend/nginx:/etc/nginx
-      - beerpong/frontend/app:/usr/share/beerpong-fe
+      - ./beerpong/frontend/nginx:/etc/nginx
+      - ./beerpong/frontend/app:/usr/share/beerpong-fe
   api:
     image: davidbohl/beerpong-be
     restart: always
@@ -24,11 +24,11 @@ services:
     depends_on: 
       - mongo
     volumes:
-      - beerpong/backend:/usr/src/app
+      - ./beerpong/backend:/usr/src/app
   mongo:
     container_name: mongo
     image: mongo
     ports:
       - "27017:27017"
     volumes: 
-      - beerpong/mongodata:/data/db
+      - ./beerpong/mongodata:/data/db
