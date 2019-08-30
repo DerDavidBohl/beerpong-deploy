@@ -26,4 +26,4 @@ services:
     ports:
       - "27017:27017"
     volumes: 
-      - ./beerpong/mongodata:/data/db
+      - /beerpong/mongodata:/data/db
