@@ -10,9 +10,6 @@ services:
       - "443:443"
     depends_on:
       - "api"
-    volumes:
-      - ./beerpong/frontend/nginx:/etc/nginx
-      - ./beerpong/frontend/app:/usr/share/beerpong-fe
   api:
     image: davidbohl/beerpong-be
     restart: always
@@ -22,9 +19,7 @@ services:
     links: 
       - mongo
     depends_on: 
-      - mongo
-    volumes:
-      - ./beerpong/backend:/usr/src/app
+      - mongo 
   mongo:
     container_name: mongo
     image: mongo
