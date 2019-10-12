@@ -5,6 +5,7 @@ services:
     restart: always
     environment: 
       - API_URL=http://localhost:3000/api/v1
+    command: ls /usr/share/nginx/html/assets
     ports:
       - "80:80"
       - "443:443"
@@ -13,7 +14,7 @@ services:
   api:
     image: davidbohl/beerpong-be
     restart: always
-    command: bash -c "npm run build && npm run start"
+    command: node build/server.js
     ports: 
       - "3000:3000"
     links: 
