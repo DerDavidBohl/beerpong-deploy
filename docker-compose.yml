@@ -8,7 +8,6 @@ services:
     command: ls /usr/share/nginx/html/assets
     ports:
       - "80:80"
-      - "443:443"
     depends_on:
       - "api"
   api:
